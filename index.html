@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia da Terceira Idade - Segurança e Direitos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">👴👵 Guia Prático</div>
+        <ul class="nav-links">
+            <li><a href="#direitos">Seus Direitos</a></li>
+            <li><a href="#golpes">Alertas de Golpes</a></li>
+            <li><a href="#simulador">Treinar Defesa</a></li>
+        </ul>
+        <button id="btn-fonte" class="btn-acessibilidade">🔍 Aumentar Letra</button>
+    </nav>
+
+    <header class="hero">
+        <h1>Portal de Proteção ao Idoso</h1>
+        <p>Aprenda a se defender de golpes virtuais e conheça os direitos garantidos por lei.</p>
+    </header>
+
+    <main class="container">
+        
+        <section id="direitos" class="card">
+            <h2>📜 Conheça os Seus Direitos</h2>
+            <p>O Estatuto do Idoso garante diversos benefícios essenciais para quem tem 60 anos ou mais:</p>
+            <div class="grid-direitos">
+                <div class="item-direito">
+                    <h3>🚌 Transporte Gratuito</h3>
+                    <p>Gratuidade nos transportes públicos coletivos urbanos e reserva de vagas em viagens interestaduais.</p>
+                </div>
+                <div class="item-direito">
+                    <h3>🏥 Atendimento Prioritário</h3>
+                    <p>Prioridade imediata e preferencial no atendimento em órgãos públicos, bancos e hospitais.</p>
+                </div>
+                <div class="item-direito">
+                    <h3>💰 Isenção de IPTU</h3>
+                    <p>Muitas cidades oferecem desconto ou isenção total do IPTU para aposentados (consulte sua prefeitura).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="golpes" class="card">
+            <h2>⚠️ Atenção aos Golpes Mais Comuns</h2>
+            <p>Fique atento para não cair nessas armadilhas que acontecem por telefone ou WhatsApp:</p>
+            
+            <div class="alerta-golpe">
+                <h3>1. O Golpe do Falso Pix ou Falso Filho</h3>
+                <p><strong>Como funciona:</strong> Alguém manda mensagem de um número desconhecido fingindo ser seu filho ou neto, dizendo que mudou de número e precisa de dinheiro urgente.</p>
+                <p class="dica-seguranca">💡 <strong class="texto-alerta">Como se proteger:</strong> Nunca envie dinheiro. Ligue imediatamente para o número antigo do seu familiar para confirmar.</p>
+            </div>
+
+            <div class="alerta-golpe">
+                <h3>2. O Golpe do Falso Atendente de Banco</h3>
+                <p><strong>Como funciona:</strong> Uma pessoa liga dizendo que sua conta foi invadida e pede para você confirmar sua senha ou fazer uma transferência de segurança.</p>
+                <p class="dica-seguranca">💡 <strong class="texto-alerta">Como se proteger:</strong> Bancos nunca ligam pedindo senhas. Desligue e vá até a sua agência.</p>
+            </div>
+        </section>
+
+        <section id="simulador" class="card text-center">
+            <h2>🎮 Jogo de Treinamento: É Golpe ou Seguro?</h2>
+            <p>Veja a mensagem abaixo e clique na resposta certa para testar seus reflexos de proteção!</p>
+            
+            <div class="caixa-mensagem">
+                <p><strong>Mensagem recebida:</strong> "URGENTE: Banco Informa: Sua conta foi bloqueada por segurança. Clique no link para recadastrar sua senha agora: www.bancofalso123.com"</p>
+            </div>
+
+            <div class="botoes-simulador">
+                <button onclick="verificarResposta('golpe')" class="btn-resposta btn-golpe">⚠️ É GOLPE!</button>
+                <button onclick="verificarResposta('seguro')" class="btn-resposta btn-seguro">✅ É SEGURO</button>
+            </div>
+
+            <div id="resultado-simulador" class="resultado hidden"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Projeto Escolar de Conscientização Social &copy; 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
