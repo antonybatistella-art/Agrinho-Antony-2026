@@ -2,176 +2,116 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     scroll-behavior: smooth;
 }
 
-/* Cores pensadas para alto contraste (fácil leitura para idosos) */
+/* Cores Base Padrão */
+:root {
+    --bg-site: #f4f6f9;
+    --bg-card: #ffffff;
+    --texto: #1a202c;
+    --azul-escuro: #003366;
+    --amarelo: #ffcc00;
+    --borda: #e2e8f0;
+}
+
+/* Classe de Alto Contraste (Ativada por JS) */
+body.alto-contraste {
+    --bg-site: #000000;
+    --bg-card: #111111;
+    --texto: #ffffff;
+    --azul-escuro: #ffff00;
+    --amarelo: #ffff00;
+    --borda: #ffff00;
+}
+
 body {
-    background-color: #f7f9fc;
-    color: #1a202c;
+    background-color: var(--bg-site);
+    color: var(--texto);
     line-height: 1.7;
-    font-size: 18px; /* Fonte padrão já começa maior por acessibilidade */
-    transition: font-size 0.2s;
-}
-
-/* Regra especial para aumentar a letra dinamicamente via JS */
-body.fonte-grande {
-    font-size: 24px;
-}
-
-.container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    font-size: 18px;
+    transition: font-size 0.2s, background-color 0.2s, color 0.2s;
     padding-bottom: 60px;
 }
 
-/* Menu */
+body.fonte-grande { font-size: 24px; }
+
+/* Barra de Acessibilidade Superior */
+.barra-acessibilidade {
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.5rem;
+}
+
+.btn-acc {
+    background-color: #444;
+    color: white;
+    border: 1px solid #666;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+}
+.btn-acc:hover { background-color: #555; }
+
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #003366; /* Azul escuro bem visível */
+    background-color: var(--azul-escuro);
     padding: 1rem 2rem;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    color: var(--bg-card);
 }
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.btn-acessibilidade {
-    background-color: #ffcc00; /* Amarelo contraste */
-    color: #003366;
-    border: none;
-    padding: 0.6rem 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
+.navbar .logo { font-weight: bold; }
+.nav-links { display: flex; list-style: none; gap: 1.5rem; }
+.nav-links a { color: var(--bg-card); text-decoration: none; font-weight: bold; }
 
 /* Header */
-.hero {
-    background-color: #004488;
-    color: white;
-    text-align: center;
-    padding: 3rem 1rem;
-}
+.hero { background-color: #004488; color: white; text-align: center; padding: 2.5rem 1rem; }
+body.alto-contraste .hero { background-color: #000; border-bottom: 2px solid #ffff00;}
 
-.hero h1 { margin-bottom: 1rem; font-size: 2.2rem; }
-
-/* Cards */
+/* Cards e Layout */
+.container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
 .card {
-    background-color: white;
-    padding: 2.5rem;
+    background-color: var(--bg-card);
+    padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     margin-bottom: 2rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--borda);
 }
+.card h2 { color: var(--azul-escuro); margin-bottom: 1rem; }
+.text-center { text-align: center; }
 
-.card h2 {
-    color: #003366;
-    margin-bottom: 1.5rem;
-    border-bottom: 3px solid #ffcc00;
-    padding-bottom: 0.5rem;
-}
+/* Grid Direitos */
+.grid-direitos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.item-direito { background-color: rgba(0, 51, 102, 0.05); padding: 1rem; border-radius: 8px; border-left: 5px solid var(--azul-escuro); }
+body.alto-contraste .item-direito { background-color: #222; }
 
-/* Seção de Direitos */
-.grid-direitos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.item-direito {
-    background-color: #f0f4f8;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 5px solid #004488;
-}
-
-/* Seção de Golpes */
-.alerta-golpe {
-    background-color: #fff5f5;
-    border: 1px solid #fed7d7;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-}
-
-.alerta-golpe h3 { color: #c53030; margin-bottom: 0.5rem; }
-.dica-seguranca {
-    background-color: #e6fffa;
-    padding: 0.8rem;
-    border-radius: 5px;
-    margin-top: 0.8rem;
-    border-left: 4px solid #319795;
-}
-.texto-alerta { color: #234e52; }
+/* Alertas de Golpe */
+.alerta-golpe { background-color: rgba(229, 62, 62, 0.05); border: 1px solid var(--borda); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+.dica-seguranca { background-color: rgba(49, 151, 149, 0.1); padding: 0.5rem; margin-top: 0.5rem; border-radius: 4px; }
 
 /* Simulador */
-.text-center { text-align: center; }
-.caixa-mensagem {
-    background-color: #edf2f7;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-    border: 2px dashed #cbd5e0;
-    font-style: italic;
-}
-
-.botoes-simulador {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.btn-resposta {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    color: white;
-}
-
+.caixa-mensagem { background-color: rgba(0,0,0,0.03); padding: 1.5rem; border-radius: 8px; margin: 1rem 0; border: 2px dashed var(--borda); }
+.botoes-simulador { display: flex; justify-content: center; gap: 10px; }
+.btn-resposta { padding: 10px 20px; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; color: white; }
 .btn-golpe { background-color: #e53e3e; }
 .btn-seguro { background-color: #3182ce; }
+.btn-proximo { margin-top: 1rem; padding: 8px 15px; cursor: pointer; }
 
-.resultado {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    border-radius: 8px;
-    font-weight: bold;
-}
+.resultado { margin-top: 1rem; padding: 1rem; border-radius: 5px; font-weight: bold; }
 .resultado.sucesso { background-color: #c6f6d5; color: #22543d; }
 .resultado.erro { background-color: #fed7d7; color: #742a2a; }
-
 .hidden { display: none; }
 
-/* Rodapé */
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #003366;
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    font-size: 0.9rem;
-}
+/* Telefones */
+.telefone-item { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; background: rgba(0,0,0,0.02); margin-bottom: 0.5rem; border-radius: 6px; }
+body.alto-contraste .telefone-item { background: #222; border: 1px solid #ffff00; }
+.btn-ligar { background-color: var(--amarelo); color: black; border: none; padding: 5px 15px; font-weight: bold; cursor: pointer; border-radius: 4px; }
+
+footer { text-align: center; padding: 1rem; background-color: var(--azul-escuro); color: var(--bg-card); position: fixed; bottom: 0; width: 100%; font-size: 0.8rem; }
