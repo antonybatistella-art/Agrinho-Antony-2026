@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia da Terceira Idade - Segurança e Direitos</title>
+    <title>Portal da Terceira Idade - Acessível</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="barra-acessibilidade">
+        <button id="btn-fonte" class="btn-acc">🔍 Aumentar Texto</button>
+        <button id="btn-contraste" class="btn-acc">👁️ Alto Contraste</button>
+        <button onclick="lerTextoPrincipal()" class="btn-acc 🔊">🔊 Ler Página</button>
+    </div>
+
     <nav class="navbar">
         <div class="logo">👴👵 Guia Prático</div>
         <ul class="nav-links">
-            <li><a href="#direitos">Seus Direitos</a></li>
-            <li><a href="#golpes">Alertas de Golpes</a></li>
-            <li><a href="#simulador">Treinar Defesa</a></li>
+            <li><a href="#direitos">Direitos</a></li>
+            <li><a href="#golpes">Alertas</a></li>
+            <li><a href="#simulador">Treinamento</a></li>
+            <li><a href="#telefones">Ajuda</a></li>
         </ul>
-        <button id="btn-fonte" class="btn-acessibilidade">🔍 Aumentar Letra</button>
     </nav>
 
-    <header class="hero">
+    <header class="hero" id="texto-intro">
         <h1>Portal de Proteção ao Idoso</h1>
         <p>Aprenda a se defender de golpes virtuais e conheça os direitos garantidos por lei.</p>
     </header>
@@ -39,34 +45,34 @@
                 </div>
                 <div class="item-direito">
                     <h3>💰 Isenção de IPTU</h3>
-                    <p>Muitas cidades oferecem desconto ou isenção total do IPTU para aposentados (consulte sua prefeitura).</p>
+                    <p>Muitas cidades oferecem desconto ou isenção total do IPTU para aposentados.</p>
                 </div>
             </div>
         </section>
 
         <section id="golpes" class="card">
             <h2>⚠️ Atenção aos Golpes Mais Comuns</h2>
-            <p>Fique atento para não cair nessas armadilhas que acontecem por telefone ou WhatsApp:</p>
+            <p>Fique atento para não cair nessas armadilhas do dia a dia:</p>
             
             <div class="alerta-golpe">
                 <h3>1. O Golpe do Falso Pix ou Falso Filho</h3>
-                <p><strong>Como funciona:</strong> Alguém manda mensagem de um número desconhecido fingindo ser seu filho ou neto, dizendo que mudou de número e precisa de dinheiro urgente.</p>
-                <p class="dica-seguranca">💡 <strong class="texto-alerta">Como se proteger:</strong> Nunca envie dinheiro. Ligue imediatamente para o número antigo do seu familiar para confirmar.</p>
+                <p>Alguém manda mensagem de um número desconhecido fingindo ser seu filho ou neto pedindo dinheiro urgente.</p>
+                <p class="dica-seguranca">💡 <strong>Como se proteger:</strong> Nunca envie dinheiro. Ligue para o número antigo do seu familiar.</p>
             </div>
 
             <div class="alerta-golpe">
                 <h3>2. O Golpe do Falso Atendente de Banco</h3>
-                <p><strong>Como funciona:</strong> Uma pessoa liga dizendo que sua conta foi invadida e pede para você confirmar sua senha ou fazer uma transferência de segurança.</p>
-                <p class="dica-seguranca">💡 <strong class="texto-alerta">Como se proteger:</strong> Bancos nunca ligam pedindo senhas. Desligue e vá até a sua agência.</p>
+                <p>Uma pessoa liga dizendo que sua conta foi invadida e pede para você confirmar sua senha ou fazer um Pix.</p>
+                <p class="dica-seguranca">💡 <strong>Como se proteger:</strong> Bancos nunca ligam pedindo senhas. Desligue imediatamente.</p>
             </div>
         </section>
 
         <section id="simulador" class="card text-center">
             <h2>🎮 Jogo de Treinamento: É Golpe ou Seguro?</h2>
-            <p>Veja a mensagem abaixo e clique na resposta certa para testar seus reflexos de proteção!</p>
+            <p>Veja a mensagem fictícia abaixo e clique na resposta certa!</p>
             
             <div class="caixa-mensagem">
-                <p><strong>Mensagem recebida:</strong> "URGENTE: Banco Informa: Sua conta foi bloqueada por segurança. Clique no link para recadastrar sua senha agora: www.bancofalso123.com"</p>
+                <p id="texto-mensagem">"URGENTE: Banco Informa: Sua conta foi bloqueada. Clique no link para recadastrar sua senha agora: www.bancofalso123.com"</p>
             </div>
 
             <div class="botoes-simulador">
@@ -75,6 +81,22 @@
             </div>
 
             <div id="resultado-simulador" class="resultado hidden"></div>
+            <button id="btn-proximo" class="btn-proximo hidden" onclick="proximaMensagem()">Próxima Mensagem ➡️</button>
+        </section>
+
+        <section id="telefones" class="card">
+            <h2>📞 Telefones Úteis e de Ajuda</h2>
+            <p>Se você precisar denunciar um abuso ou pedir ajuda econômica/social, use estes números públicos:</p>
+            <div class="lista-telefones">
+                <div class="telefone-item">
+                    <span>🚨 <strong>Polícia Militar:</strong> Ligue 190</span>
+                    <button onclick="simularLigacao('190')" class="btn-ligar">Ligar</button>
+                </div>
+                <div class="telefone-item">
+                    <span>🛡️ <strong>Direitos Humanos (Disque 100):</strong> Violência contra idosos</span>
+                    <button onclick="simularLigacao('100')" class="btn-ligar">Ligar</button>
+                </div>
+            </div>
         </section>
 
     </main>
